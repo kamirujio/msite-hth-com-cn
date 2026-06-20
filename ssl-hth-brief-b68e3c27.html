@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hth · 稳定而安静的入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #fce7d6 0%, #f8d5b0 45%, #f3c8a0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #2d241b;
+        }
+
+        .page-card {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(255, 252, 245, 0.85);
+            backdrop-filter: blur(6px);
+            border-radius: 48px 24px 48px 24px;
+            padding: 2.8rem 2.4rem;
+            box-shadow: 0 20px 40px -12px rgba(110, 70, 40, 0.25), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease;
+            margin: 1.2rem 0;
+        }
+
+        .page-card:hover {
+            box-shadow: 0 28px 48px -14px rgba(130, 80, 40, 0.30);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #dbb594;
+            color: #fef9f2;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 1.6rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #31261c;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #e5b48a;
+            padding-left: 1rem;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #5f4d3a;
+            background: rgba(240, 221, 200, 0.3);
+            padding: 0.9rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid #eedccb;
+        }
+
+        .body-text {
+            margin-bottom: 1.8rem;
+        }
+
+        .body-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .body-text strong {
+            color: #7f5d3f;
+            font-weight: 600;
+        }
+
+        .quote-block {
+            background: #f7eee4;
+            padding: 1.4rem 1.6rem;
+            border-radius: 28px 12px 28px 12px;
+            margin: 1.8rem 0 1.4rem 0;
+            border-left: 6px solid #d9b38c;
+            font-style: normal;
+            color: #3f3225;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .quote-block::before {
+            content: "💡 提示 · ";
+            font-weight: 500;
+            color: #9d7a5a;
+        }
+
+        .access-line {
+            background: #e9d8c3;
+            padding: 0.9rem 1.4rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 1rem 0 0.2rem 0;
+            font-size: 0.95rem;
+            border: 1px solid #dcc2ab;
+        }
+
+        .access-line a {
+            color: #3d2c1b;
+            font-weight: 600;
+            text-decoration: none;
+            background: #fff5ea;
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            transition: background 0.2s, color 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .access-line a:hover {
+            background: #ccaa88;
+            color: #fdf7f0;
+            border-color: #b48d6a;
+        }
+
+        .faq-mini {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 2px dashed #ddc8b2;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-item q {
+            font-weight: 500;
+            color: #624b32;
+            display: block;
+            margin-bottom: 0.3rem;
+            font-style: italic;
+        }
+
+        .faq-item p {
+            font-size: 0.93rem;
+            color: #4b3d2e;
+            margin-left: 0.6rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #8e7a68;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-note span {
+            background: #ede0d1;
+            padding: 0.1rem 0.5rem;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 640px) {
+            .page-card {
+                padding: 2rem 1.2rem;
+                border-radius: 32px 16px 32px 16px;
+            }
+            h1 {
+                font-size: 1.8rem;
+                padding-left: 0.7rem;
+            }
+            .subhead {
+                font-size: 0.95rem;
+                padding: 0.7rem 1rem;
+            }
+            .access-line {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .page-card {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-card">
+        <div class="hero-tag">· 内容索引 ·</div>
+        <h1>一个稳定的入口，<br>比快捷方式更安静</h1>
+
+        <div class="subhead">
+            有时候我们需要的不是更多选择，而是一个能放心记住的页面。这篇文章聊聊为什么一个简单的地址，也可以成为日常的锚点。
+        </div>
+
+        <div class="body-text">
+            <p>差不多两年前我开始养成一个习惯：把常用服务的链接单独存成一个书签文件夹，但后来发现真正频繁使用的，无非三四个。而其中有一个我一直会保留在浏览器首页的标签，就是 <strong>hth</strong>。没有花哨的引导，没有弹窗，打开就是熟悉的界面。或许很多人觉得这没什么特别，但对我来说，一个稳定、加载快速、没有多余跳转的入口，本身就是一种可靠的体验。</p>
+
+            <p>这些页面通常承担着「连接」的角色。不管是工作间隙快速查看消息，还是每天固定时间需要处理一些事务，<strong>hth</strong> 的简洁让我省去了重复输入的麻烦。它就像抽屉里那把常用的钥匙，不一定耀眼，但你随时知道它在那里。</p>
+
+            <p>其实在信息过载的时代，所谓的「好设计」往往不是功能最多的，而是那个在你想做某件事时，能让你最短时间内进入状态的地方。这个页面刚好做到了：直观的布局，克制的配色，以及合理的入口安排。没有多余的装饰，也没有诱导你去乱点的小红点。</p>
+
+            <div class="quote-block">
+                用久了就会发现，一个能让你忘记「寻找」的入口，才是真正的好入口。<br>
+                它不会频繁改版，不会每两周就换一次结构，而是一种踏实的熟悉感。
+            </div>
+
+            <p>我有时会和朋友聊起，为什么宁愿把 <a href="https://ssl-hth.com">hth</a> 放在浏览器默认的标签栏，也不愿意每次去搜索引擎里找。答案其实很简单——路径越短，干扰越少。当你需要快速进入状态时，一个直接、经过验证的链接，远比一个花哨的门面更值得依赖。</p>
+
+            <p>当然，每个人对「稳定」的定义不太一样。有人喜欢收藏夹里整整齐齐的几十个书签，有人偏好记忆一个简洁的域名。但如果你也厌烦了每次都要从零开始找入口，不妨试试把某个页面固定下来，成为你的默认起点。</p>
+        </div>
+
+        <div class="access-line">
+            🔗 日常访问的地址：<a href="https://ssl-hth.com">hth</a>
+        </div>
+
+        <div class="faq-mini">
+            <div class="faq-item">
+                <q>这个页面有什么特别的功能吗？</q>
+                <p>它本身是一个直接的入口页面，没有复杂的后台。适合作为日常使用的固定标签，减少每次查找的时间。打开即用，干净利落。</p>
+            </div>
+            <div class="faq-item">
+                <q>换了设备之后还能习惯吗？</q>
+                <p>只要记住那个地址就行。无论电脑还是手机，浏览器打开都是一致的界面，不需要重新适应布局或菜单位置。</p>
+            </div>
+            <div class="faq-item">
+                <q>和其他同类页面相比，优势在哪里？</q>
+                <p>更少的变化和干扰。很多页面会频繁调整结构，但这里保持了很长一段时间的稳定性，对于依赖固定操作流程的人来说很友好。</p>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span>📌 页面说明 · 基于日常使用体验整理</span> —— 稳定即效率
+        </div>
+    </div>
+</body>
+</html>
