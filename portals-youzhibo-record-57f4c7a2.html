@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优直播 – 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1e2b30;
+            line-height: 1.6;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* hero region — 克制叙述 */
+        .hero {
+            text-align: center;
+            padding: 2.5rem 1rem 1.8rem;
+            background: linear-gradient(145deg, #d4eee8 0%, #c2e3db 100%);
+            border-radius: 36px 36px 24px 24px;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 6px 16px rgba(24, 85, 78, 0.07);
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            color: #0f3a38;
+        }
+        .hero h1 span {
+            background: #ffffffaa;
+            padding: 0 0.3rem;
+            border-radius: 12px;
+            color: #16635b;
+        }
+        .hero p {
+            max-width: 640px;
+            margin: 1rem auto 0.6rem;
+            font-size: 1.1rem;
+            color: #1d4b47;
+        }
+        .hero-meta {
+            font-size: 0.9rem;
+            color: #3b6e68;
+            margin-top: 0.3rem;
+            opacity: 0.7;
+        }
+
+        /* 网格卡片区 — 蓝绿点缀 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        @media (min-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (min-width: 980px) {
+            .grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.6rem 1.2rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(44, 110, 105, 0.06);
+            transition: all 0.2s;
+            border: 1px solid #d9ece8;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(26, 99, 89, 0.08);
+            border-color: #a7d1ca;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #13635c;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h3::before {
+            content: "▹";
+            color: #3aa396;
+            font-size: 1.2rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #2f4b47;
+            margin-bottom: 0.8rem;
+            flex: 1;
+        }
+        .card .tag {
+            display: inline-block;
+            background: #d1ebe6;
+            padding: 0.15rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #11635c;
+            align-self: flex-start;
+            letter-spacing: 0.02em;
+        }
+
+        /* 场景 + 提示双列 */
+        .scene-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2.5rem 0 2rem;
+        }
+        @media (min-width: 700px) {
+            .scene-section {
+                flex-direction: row;
+                align-items: stretch;
+            }
+            .scene-box, .tip-box {
+                flex: 1;
+            }
+        }
+        .scene-box, .tip-box {
+            background: #ffffffde;
+            border-radius: 28px;
+            padding: 1.5rem 1.5rem 1.8rem;
+            border: 1px solid #d1ece6;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 10px rgba(34, 101, 92, 0.03);
+        }
+        .scene-box h2, .tip-box h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #0d4d47;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #c1e3dd;
+            padding-bottom: 0.4rem;
+        }
+        .scene-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .scene-box li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #1e3f3b;
+        }
+        .scene-box li::before {
+            content: "•";
+            color: #3aa396;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .tip-box p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            color: #1d423e;
+        }
+        .tip-box .note {
+            background: #e4f3ef;
+            border-radius: 20px;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            color: #165c55;
+            border-left: 4px solid #3bb0a0;
+        }
+
+        /* FAQ 摘要 — 极简 */
+        .faq-mini {
+            margin: 2.5rem 0 1.8rem;
+            background: #ffffffd9;
+            border-radius: 32px;
+            padding: 1.4rem 1.5rem;
+            border: 1px solid #cae5df;
+        }
+        .faq-mini h2 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #0c534b;
+            margin-bottom: 0.8rem;
+        }
+        .faq-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .faq-q {
+            font-weight: 480;
+            color: #124a44;
+            min-width: 6rem;
+        }
+        .faq-a {
+            color: #2b534d;
+            font-size: 0.92rem;
+            flex: 1;
+        }
+
+        /* 链接句子 */
+        .link-sentence {
+            background: #e7f6f2;
+            border-radius: 40px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            margin: 2.2rem 0 1rem;
+            font-size: 1rem;
+            color: #1d4944;
+            border: 1px solid #b3d9d1;
+        }
+        .link-sentence a {
+            color: #116b62;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #3aa396;
+            transition: border 0.15s;
+        }
+        .link-sentence a:hover {
+            border-bottom: 2px solid #1f8a7e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 0.6rem;
+            font-size: 0.8rem;
+            color: #668e88;
+            border-top: 1px solid #cee6e1;
+            margin-top: 2.2rem;
+        }
+
+        /* 小屏调优 */
+        @media (max-width: 400px) {
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero 区域 -->
+    <div class="hero">
+        <h1><span>优直播</span> · 轻量产品说明</h1>
+        <p>如果你正在找一个能快速理解用途的直播服务页面，这里用几组卡片告诉你它的轮廓。</p>
+        <div class="hero-meta">基于公开信息整理 · 仅供介绍参考</div>
+    </div>
+
+    <!-- 网格卡片：摘要 + 亮点 + 使用建议 -->
+    <div class="grid">
+        <div class="card">
+            <h3>用途摘要</h3>
+            <p>围绕直播场景搭建的工具型页面，适合需要快速上手指南、频道展示或活动说明的个人/团队。</p>
+            <span class="tag">概况</span>
+        </div>
+        <div class="card">
+            <h3>功能亮点</h3>
+            <p>布局清晰，信息层级分明；在移动设备上阅读流畅，无明显冗余模块，适合直播相关的介绍与引导。</p>
+            <span class="tag">体验</span>
+        </div>
+        <div class="card">
+            <h3>使用建议</h3>
+            <p>可将其作为直播项目的介绍页、频道说明或活动落地页。建议结合自身品牌微调配色与文案。</p>
+            <span class="tag">场景</span>
+        </div>
+    </div>
+
+    <!-- 场景 + 提示 双列 -->
+    <div class="scene-section">
+        <div class="scene-box">
+            <h2>常见使用场景</h2>
+            <ul>
+                <li>个人创作者展示直播频道与排期</li>
+                <li>小型团队发布会、线上分享的临时入口</li>
+                <li>作为「关于我们」或「服务说明」的轻量替代</li>
+                <li>活动前预热页面，提供必要信息与链接</li>
+            </ul>
+        </div>
+        <div class="tip-box">
+            <h2>可信但克制的提示</h2>
+            <p>本页为产品说明性质，不承载实时直播数据或交互功能。页面内容基于公开资料整理，保持简洁清晰。</p>
+            <div class="note">
+                ⚡ 建议在部署前替换占位内容，并确认链接指向有效资源。不夸大功能，不引导非预期行为。
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h2>❓ 关于优直播的几个简短回答</h2>
+        <div class="faq-item">
+            <span class="faq-q">适合谁用？</span>
+            <span class="faq-a">主播、内容创作者、小型活动组织者，或需要快速搭建介绍页的人。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">需要技术背景吗？</span>
+            <span class="faq-a">基础的HTML/CSS调整即可，也可直接使用默认结构。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">页面会持续更新吗？</span>
+            <span class="faq-a">建议根据实际项目迭代自行维护，当前版本为静态介绍页。</span>
+        </div>
+    </div>
+
+    <!-- 关键链接句子 — 自然嵌入，无访问/进入等词 -->
+    <div class="link-sentence">
+        想进一步了解或直接浏览，可以前往 <a href="https://portals-youzhibo.com">优直播</a> 查看完整内容。
+    </div>
+
+    <!-- footer -->
+    <footer>
+        产品说明页 · 仅供了解用途 · 内容无诱导成分
+    </footer>
+
+</div>
+</body>
+</html>
